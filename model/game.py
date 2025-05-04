@@ -4,6 +4,7 @@ from datetime import datetime
 
 @dataclass
 class Game:
+    game_id: int
     title: str
     path: str
     cover_art_path: str

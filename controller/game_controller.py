@@ -9,12 +9,8 @@ class GameController:
     def __init__(self):
         self.__library = Library()
 
-        self.__library.add_game(Game(title="The Elder Scrolls V: Skyrim Special Edition",
-                                     path="D:\SteamLibrary\steamapps\common\Skyrim Special Edition\SkyrimSELauncher.exe",
-                                     cover_art_path="Assets\skyrim_se_cover.png"))
-
     def print_games(self):
-        for game in self.__library.get_games():
+        for game in self.__library.get_all_games():
             GameViewer.print_game(game)
 
     def launch_game(self, game: Game):
@@ -25,3 +21,11 @@ class GameController:
 
         if found_game is not None:
             self.launch_game(found_game)
+        else:
+            GameViewer.game_not_found(title)
+
+    def add_game(self, title, path, cover_art_path):
+        self.__library.add_game(title, path, cover_art_path)
+
+    def remove_game(self, title):
+        self.__library.remove_game_by_title(title)
