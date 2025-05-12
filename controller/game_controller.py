@@ -3,11 +3,12 @@ import os
 from model.game import Game
 from model.library import Library
 from view.game_viewer import GameViewer
+from database.sqlitehandler import SQLiteHandler
 
 
 class GameController:
     def __init__(self):
-        self.__library = Library()
+        self.__library = Library(SQLiteHandler())
 
     def print_games(self):
         for game in self.__library.get_all_games():
